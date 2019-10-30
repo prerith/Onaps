@@ -1,0 +1,54 @@
+
+
+void fbbar();
+void showmouse();
+void initMouse();
+void hidemouse();
+
+
+REGS regs;
+void initMouse()
+{    regs.x.ax=0;int86(0x33,&regs,&regs);
+}
+void showMouse()
+{
+	 regs.x.ax=1;int86(0x33,&regs,&regs);
+	 regs.x.ax=3;int86(0x33,&regs,&regs);
+}
+void hideMouse()
+{
+	 regs.x.ax=2;int86(0x33,&regs,&regs);
+}
+
+/*
+BUTTON Mouse::GetButton()
+{
+ return mouseBtn;
+}
+
+*/
+
+void fbbar()
+{
+   startgraph();
+       int r=5,y1=300,y2=300, x,d =200, y=300;
+	   for(;y>290;y--)
+	   {
+	      cleardevice();
+	      circle(280,y,r);
+	     // delay(d);
+	       getch();
+		if(y==297)
+		{
+		    circle(300,y1,r);
+		    y1--;
+		}
+		if(y==294)
+		{
+		    circle(300,y2,r);
+		    y2--;
+		}
+	   }
+
+    getch();
+}

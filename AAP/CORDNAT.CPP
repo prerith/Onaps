@@ -1,0 +1,52 @@
+
+/*72 u
+80    d
+77     r
+75      l
+*/
+
+void coordinate()
+{
+    startgraph();
+    int xx,yy,u,d,l,r;
+    char a[10],b[10];
+	   int x,y;
+		 char ch;
+	x=getmaxx()/2;
+	y=getmaxy()/2;
+
+       outtextxy(x,y,"*");
+	   while(1)
+	   {
+		ch=getch();
+		 settextstyle(6,0,2);
+		 outtextxy(10,10,"        ");
+
+		cleardevice();
+//		x=getx();
+  //		y=gety();
+		switch(ch)
+		{
+		    case  72:  y-- ;  //jkhl ljkl l/dn
+				 break;
+		    case  80: y++ ;  //up
+				 break;
+		    case  75:  x-- ;
+				 break;
+		    case  77:  x++;
+				 break;
+
+		    case  'q':
+		    case  'Q':  return;    //return to homepage
+		}
+
+	       outtextxy(x,y,"*");
+	       itoa(x,a,10);
+	       itoa(y,b,10);
+	       outtextxy(10,10,a);
+	       outtextxy(50,10," , ");
+	       outtextxy(75,10,b);
+	       outtextxy(460,450,"Press Q To Quit");
+	   }
+      closegraph();
+}

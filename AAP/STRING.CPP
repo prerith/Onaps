@@ -1,0 +1,288 @@
+
+
+void flcapi();
+void convertcase();
+void pali();
+void lowercase();
+void uppercase();
+void stringani();
+int mystrstr(char*arr,char*arr2) ;
+void mystrrev(char*arr,int e)   ;
+void mystrcat(char*arr,char*arr2) ;
+void mystrcpy(char*arr)            ;
+int mystrlen(const char*arr)         ;
+int mystrcmp(char*arr,char*arr2)      ;
+void string();
+
+int mystrlen(const char*arr)
+{
+	int len;
+	for( len=0 ; arr[len]!='\0'; len++);
+	return len;
+}
+
+void mystrcpy(char*arr)
+{
+	char arr2[31];
+	for(int i=0;arr[i];i++)
+	{
+		arr2[i]=arr[i];
+	}
+	arr2[i]='\0';
+	puts(arr2);
+}
+
+void mystrcat(char*arr,char*arr2)
+{
+	int length=mystrlen(arr);
+	for(int i=length,j=0;arr2[j];j++)
+	{
+		arr[i++]=arr2[j];
+	}
+	arr[i]='\0';
+	puts(arr);
+}
+
+int mystrcmp(char*arr,char*arr2)
+{
+	int res;
+	for(int i=0;arr[i]||arr2[i];i++)
+	{
+		if(arr[i]!=arr2[i])
+		{
+			res=arr[i]-arr2[i];
+			break;
+		}
+		else
+			res=0;
+	}
+	return res;
+}
+
+void mystrrev(char*arr,int e)
+{
+	for(int i=0,p=e-1;i<e/2;i++,p--)
+	{
+		arr[i]=arr[i]+arr[p];
+		arr[p]=arr[i]-arr[p];
+		arr[i]=arr[i]-arr[p];
+	}
+       gotoxy(15,19);	cout<<"Reversed string is: "<<arr;
+}
+
+int mystrstr(char*arr,char*arr2)
+{    int pos;signed found=0;
+	for (int i=0;arr[i];i++)
+	{	pos=i;
+		for(int j=0;arr2[j];j++,i++)
+		{	if(arr[i]!=arr2[j])
+			{	pos=i;
+				break;
+			}
+		}
+		if(arr2[j]=='\0')
+		{
+			found=1;
+			break;
+		}
+	}
+		if(found)
+		{    gotoxy(15,19);    cout<<"The String is on Position : ";
+		     return (pos+1);
+
+		}
+		else
+		{    gotoxy(15,19);    cout<<" String Not Found ";
+			return 0;
+		}
+}
+
+
+void stringani()
+{
+	  for(int i = 3 , j = 2 ; i<62 ; i++, j++)
+	  {
+		textcolor(i-14);
+		gotoxy(i,3);
+		cprintf("²²²²");
+		gotoxy(j,3);
+		cprintf(" ");
+		delay(5);
+		gotoxy(i,4);
+		cprintf("²²");
+		gotoxy(j,4);
+		cprintf(" ");
+		delay(5);
+		gotoxy(i,5);
+		cprintf("²²²²");
+		gotoxy(j,5);
+		cprintf(" ");
+	  }
+
+	for(i = 3 ,j = 2 ; i<62 ; i++, j++)
+	  {
+		textcolor(i-14);
+		gotoxy(i,6);
+		cprintf("  ²²");
+		gotoxy(j,6);
+		cprintf(" ");
+		delay(5);
+		gotoxy(i,7);
+		cprintf("²²²²tring");
+		gotoxy(j,7);
+		cprintf(" ");
+		delay(5);
+	  }
+}
+void string()
+{
+
+     while(1)
+     {
+	clrscr();
+	 textcolor(12);
+      char arr[100],arr2[100], cha ;
+      int ch,a,n;
+	 box(1,1,78,25,1,0);
+	 delay(1000);
+	 stringani();
+	 box(3,3,6,24,2,0);
+	 delay(500);
+	gotoxy(4,4);
+	gotoxy(4,8);
+	cout<<" 1.º FIND STRING LENGTH";gotoxy(4,9); delay(100);
+	cout<<" 2.º COPY THE STRING";   gotoxy(4,10);           delay(100);
+	cout<<" 3.º CONCATENATE TWO STRINGS";   gotoxy(4,11);   delay(100);
+	cout<<" 4.º REVERSE THE STRING";        gotoxy(4,12);   delay(100);
+	cout<<" 5.º FIND A STRING IN ANOTHER STRING";   gotoxy(4,13); delay(100);
+	cout<<" 6.º FIND A CHARACTER IN A STRING";      gotoxy(4,14); delay(100);
+	cout<<" 7.º Convert into Lowercase ";gotoxy(4,15);            delay(100);
+	cout<<" 8.º Convert into Uppercase ";   gotoxy(4,16);         delay(100);
+	cout<<" 9.º Palindrome ";   gotoxy(4,17);                     delay(100);
+	cout<<"10.º Convert Case";   gotoxy(4,18);                    delay(100);
+       gotoxy(50,13);
+	cout<<"Enter Your Desired Choice";
+       gotoxy(60,24);
+	cout<<"Press 0 To Exit.";
+	gotoxy(62,14);
+	cin>>ch;
+	box(13,18,57,24,12,0);
+	    switch(ch)
+	    {
+		case 1:	gotoxy(15,19);cout<<"Enter String : ";gets(arr);
+			int c=mystrlen(arr);
+			gotoxy(15,21);cout<<"The Length Of String is : ";cout<<c;
+			break;
+		case 2:	gotoxy(15,19);cout<<"Enter String : ";gets(arr);
+			gotoxy(15,21);cout<<"The String After Copying is: ";mystrcpy(arr);
+			break;
+		case 3:	gotoxy(15,19);cout<<"Enter String1 : ";gets(arr);
+			gotoxy(15,21);cout<<"Enter String2 : ";gets(arr2);
+			gotoxy(15,23);cout<<"The Joined String is : ";mystrcat(arr,arr2);
+			  break;
+		case 4: gotoxy(15,19);cout<<"Enter String : ";gets(arr);
+			gotoxy(15,21);cout<<"No.of characters to be reversed : ";cin>>n;
+			mystrrev(arr,n);
+			break;
+		case 5: gotoxy(15,19);cout<<"Enter String1 : ";gets(arr);
+			gotoxy(15,21);cout<<"Enter String to be Found : ";gets(arr2);
+			int s=mystrstr(arr,arr2);cout<<s;
+			break;
+		case 6: gotoxy(15,19);cout<<"Enter String : "; gets(arr);
+			gotoxy(15,21);cout<<"Enter a character to be Found: ";cin>>cha;
+				for(int i=0;arr[i]!='\0';i++)
+				{     gotoxy(15,19);
+					if (arr[i]==cha)
+					cout<<"The Character Found On Position : "<<i+1;
+					else
+					cout<<"Character Not Found";
+				}
+			break;
+		case 7:	gotoxy(15,19);  lowercase();
+			break;
+		case 8:	gotoxy(15,19);  uppercase();
+			  break;
+		case 9: gotoxy(15,19);  pali();
+			break;
+		case 10: gotoxy(15,19); convertcase();  break;
+		case 0: return ;
+
+	    }
+		getch();
+      }
+}
+void lowercase()
+{
+	char  v[100], s[100];
+	gotoxy(15,19);cout<<"Enter The string in Uppercase : ";
+	gets(s);
+	gotoxy(15,21);	cout<<"The String in Lowercase is : ";
+	for(int i = 0 ;  s[i] != '\0'  ; i++ )
+	{    v[i] = tolower(s[i]);
+		cout<<v[i];
+	}
+
+}
+void uppercase()
+{
+
+	char  v[100], s[100];
+gotoxy(15,19);	cout<<"Enter The string in lowercase : ";
+	gets(s);
+	gotoxy(15,21);	cout<<"The String in uppercase is : ";
+	for(int i = 0 ;  s[i] != '\0'  ; i++ )
+	{    v[i] = toupper(s[i]);
+		cout<<v[i];
+	}
+
+}
+
+void pali()
+{
+	int i , n , j ;
+	char s[100];
+
+gotoxy(15,19);	     cout<<"Enter string : ";
+	     gets(s);
+gotoxy(15,21);
+	     for(i = 0 ; s[i]!='\0' ;i++)
+			;
+	     n = i;
+	     j = i - 1 ;
+	     for(i = 0; i<n/2; i++ ,j-- )
+	     {
+		  if(s[i]!=s[j])
+		      break;
+
+	     }
+	     if(i==n/2)
+		cout<<"Palindrome";
+	     else
+		cout<<"Not palindrome";
+
+}
+
+void convertcase()
+{
+  char c[20] , d ;
+	   int l,i=15 ,  y , a , b = 0  ;
+
+gotoxy(15,19);		cout<<"Enter String : ";cin>>c;
+  l = strlen(c);
+first:	   a = c[b];
+ if (a>=97 && a<=122)
+	 {     y =  a - 32;
+	      d = y;
+	 }
+	 else
+	 {
+	     y=a+32;
+	     d=y;
+	 }
+    gotoxy(i++,21);  cout<<d;
+    b++;
+    if (b<l)
+ goto first;
+
+}
+
